@@ -1,0 +1,109 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.head-image {
+  width: 100%;
+}
+
+/*以下是个人信息  */
+
+/*当父容器指定flex盒子后其子元素就是盒子模式了，只需要指定方向即可了  */
+
+.author-date {
+  flex-direction: row;
+  margin-left: 30rpx;
+  margin-top: 20rpx;
+}
+
+.avatar {
+  height: 64rpx;
+  width: 64rpx;
+  vertical-align: middle; /*垂直居中*/
+}
+
+.author {
+  font-size: 30rpx;
+  font-weight: 300; /*字重即加粗*/
+  margin-left: 20rpx;
+  vertical-align: middle;
+  color: #666;
+}
+
+.const-text {
+  font-size: 24rpx;
+  color: #999;
+  margin-left: 20rpx;
+}
+
+.date {
+  font-size: 24rpx;
+  margin-left: 30rpx;
+  vertical-align: middle;
+  color: #999;
+}
+
+.title {
+  margin-left: 40rpx;
+  font-size: 36rpx;
+  font-weight: 700;
+  margin-top: 30rpx;
+  letter-spacing: 2px;
+  color: #4b556c;
+}
+
+/*------------线 加 分享收藏等------------  */
+
+.tool {
+  margin-top: 20rpx;
+}
+
+.circle-img {
+  float: right; /*居右*/
+  margin-right: 40rpx;
+  vertical-align: middle;
+}
+
+.circle-img image{
+    width:90rpx;
+    height: 90rpx
+}
+
+.share-img{
+    margin-left: 30rpx;
+}
+
+/*一条横线  */
+.horizon{
+    width:660rpx;
+    height: 2rpx;
+    background-color: #e5e5e5;
+    vertical-align: middle;
+    position:relative;
+    top:46rpx;
+    margin: 0 auto;
+    z-index: -99
+}
+
+.detail{
+    color:#666;
+    margin-left:20rpx;
+    margin-top:20rpx;
+    margin-right:30rpx;
+    line-height: 44rpx;
+    letter-spacing: 2rpx;
+    font-size: 24rpx;
+}
+
+/*音乐  */
+.audio{
+    width:102rpx;
+    height:110rpx;
+    position: absolute;
+    left: 50%;
+    margin-left: -51rpx;/*居中模式*/
+    top:180rpx;
+    /* opacity: 0.6; */
+    margin-top: 20rpx;
+}

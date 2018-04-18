@@ -1,0 +1,28 @@
+<!--pages/posts/post.wxml-->
+<!--通过此导入模板template 相对路径与绝对路径都可以，但是引入脚本文件只能用相对路径 -->
+<!-- <import src="post-item/post-item-template.wxml" /> -->
+<import src="/pages/posts/post-item/post-item-template.wxml" />
+
+<view>
+  <swiper catchtap='onSwiperTap' vertical='{{false}}' indicator-dots='true' indicator-active-color='#fff' autoplay='true' interval='5000' circular>
+    <swiper-item>
+      <image id='7' src='/images/wx.png' data-postId='3'></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="/images/iqiyi.png" data-postId='4'></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="/images/vr.png" data-postId='5'></image>
+    </swiper-item>
+  </swiper>
+
+  <!--利用模板  -->
+  <block wx:for="{{posts_key}}" wx:for-item="item" wx:key="*this">
+    <view catchtap='onPostTap' data-postId='{{item.postId}}'>
+      <!--此处is等于的是模板的name的名字，此处通过data进行数据传递  -->
+      <!--如果添加三个小点（展开了对象）则模板里就不用写item.了  -->
+      <template is="postItem" data="{{...item}}" />
+    </view>
+  </block>
+
+</view>

@@ -1,0 +1,16 @@
+<!--第二级 之上是movie-list 之下是stars  -->
+<!--图片+电影名+等级评分  -->
+<import src="../stars/stars-template.wxml" />
+
+<!--数据已经在上一级展开了，所以只需要键就OK了  -->
+<template name="movieTemplate">
+  <view class="movie-container" catchtap='onMovieTap' data-movieId='{{movieId}}'>
+    <image class="movie-img" src='{{coverageUrl}}'></image>
+    <text class="movie-title">{{title}}</text>
+
+    <!--3.数据继续下传  -->
+    <!-- <template is="starsTemplate" data="{{average}}"/> 一种形式-->
+    <!--另外一种形式，又重新组建进行传递  -->
+    <template is="starsTemplate" data="{{stars:stars,score:average}}" />
+  </view>
+</template>

@@ -1,0 +1,50 @@
+/* <!-- 这是最上级了， 之下是movie 再之下是stars --> */
+@import "../movie/movie-template.wxss";
+
+.movie-list-container {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.inner-container {
+  margin: 0 auto 20rpx;
+}
+
+.movie-head {
+  padding: 30rpx 20rpx 22rpx;
+  /* display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid red;
+   align-items: center;  */
+}
+
+.slogan {
+  font-size: 24rpx;
+}
+
+/*直接放在右边,也可以通过flex来居右  */
+
+.more {
+   float: right; 
+}
+
+.more-text {
+  vertical-align: middle; /*垂直居中  */
+  margin-right: 10rpx;
+  color: #1f4ba5;
+}
+
+.more-img {
+  width: 9rpx;
+  height: 16rpx;
+  vertical-align: middle;
+}
+
+/*列表是行布局  */
+
+.movies-container {
+  display: flex;
+  flex-direction: row;
+}

@@ -1,0 +1,17 @@
+<!--引入movie-template其中已经包含了star-template  -->
+<import src="../movie/movie-template.wxml" />
+
+<template name="movieGridTemplate">
+  <!--此处改为view也可以  -->
+  <!--滚动到底部/右边，会触发 scrolltolower 事件  -->
+  <scroll-view class="grid-container" scroll-y="true" scroll-x="false" bindscrolltolower="onScrollLower">
+
+    <block wx:for="{{movies}}" wx:for-item="movie" wx:key="index">
+      <view class='single-view-container'>
+        <!--数据下传,通过data：  -->
+        <template is="movieTemplate" data="{{...movie}}" />
+      </view>
+    </block>
+
+  </scroll-view>
+</template>

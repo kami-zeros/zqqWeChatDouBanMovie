@@ -1,0 +1,18 @@
+<template name="postItem">
+  <view class='post-container'>
+    <view class='post-author-date'>
+      <image class='post-author' src='{{avatar}}'></image>
+      <text class='post-date'>{{date}}</text>
+    </view>
+    <text class='post-title'>{{title}}</text>
+    <image class='post-image' src='{{imgSrc}}'></image>
+    <text class='post-content'>{{content}} </text>
+    <view class='post-like'>
+      <!--面板中图片用相对路径，当其他页面在引用时可能路径变化了，所以用相对路径不好  -->
+      <image class='post-like-image' src='../../images/icon/chat.png'></image>
+      <text class='post-like-font'>{{collection}}</text>
+      <image class='post-like-image' src='/images/icon/view.png'></image>
+      <text class='post-like-font'>{{reading}}</text>
+    </view>
+  </view>
+</template>

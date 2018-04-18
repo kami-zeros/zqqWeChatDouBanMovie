@@ -1,0 +1,34 @@
+<!--先静后动，先样式再数据  -->
+<view class='container'>
+
+  <!--头部 图片切换  -->
+  <image class='head-image' src="{{isPlayingMusic?postData.music.coverImg:postData.headImgSrc}}"></image>
+
+  <!--音乐播放 图片切换 -->
+  <image catchtap="onMusicTap" class='audio' src="{{isPlayingMusic?'/images/music/music-stop.png':'/images/music/music-start.png'}}"></image>
+
+  <view class='author-date'>
+    <image class='avatar' src='{{postData.avatar}}'></image>
+    <text class='author'>{{postData.author}}</text>
+    <text class='const-text'>发表于</text>
+    <text class='date'>{{postData.dataTime}}</text>
+  </view>
+
+  <text class='title'>{{postData.title}}</text>
+
+  <view class='tool'>
+    <view class='circle-img'>
+      <!--收藏 图片切换  -->
+      <image wx:if="{{collected}}" catchtap='onColletionTap' src='/images/icon/collection.png'></image>
+      <image wx:else catchtap='onColletionTap' src='/images/icon/collection-anti.png'></image>
+
+      <image catchtap='onShareTap' class='share-img' src='/images/icon/share.png'></image>
+    </view>
+
+    <!--水平线  -->
+    <view class='horizon'></view>
+  </view>
+
+  <text class='detail'>{{postData.detail}}</text>
+
+</view>

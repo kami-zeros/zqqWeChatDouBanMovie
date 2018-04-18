@@ -1,0 +1,24 @@
+<!--最低级 之上是movie 再之上是 movie-list  -->
+
+<!--4.数据来源上一级  -->
+<!--评分等级 五颗星的面板  -->
+<template name="starsTemplate">
+  <view class="stars-container">
+    <!--五颗星(此处是不存在半星星状态)  -->
+    <view class="stars">
+      <block wx:for="{{stars}}" wx:for-item="i" wx:key="index">
+        <image wx:if="{{i}}" src='/images/icon/star.png'></image>
+        <image wx:else src='/images/icon/none-star.png'></image>
+
+        <!--半星状态[1,1,1,2,0] 用以下判断 -->
+        <!-- <image wx:if="{{i==1}}" src='/images/icon/star.png'></image> -->
+        <!-- <image wx:elif="{{i==2}}" src='/images/icon/star.png'></image> -->
+        <!-- <image wx:else src='/images/icon/star.png'></image> -->
+      </block>
+    </view>
+
+    <!--等级评分  -->
+    <!--4.数据来源上一级template  -->
+    <text class='star-score'>{{score}}</text>
+  </view>
+</template>

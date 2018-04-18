@@ -1,0 +1,57 @@
+/* pages/movies/movies.wxss */
+@import "template/movie-list/movie-list-template.wxss";
+@import "template/movie-grid/movie-grid-template.wxss";
+
+/*--搜索框---  */
+
+.search {
+  background-color: #f2f2f2;
+  height: 80rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  /* align-items: center; */
+}
+
+.search-img {
+  margin: auto 0 auto 20rpx;/*这也是垂直居中？*/
+}
+
+.search input {
+  height: 100%;
+  width: 600rpx;
+  margin-left: 20rpx;
+  font-size: 28rpx;
+}
+
+.placeholder {
+  font-size: 14px;
+  color: #d1d1d1;
+  margin-left: 20rpx;
+}
+
+.xx-img{
+   height: 30rpx;
+    width: 30rpx;
+    margin:auto 0 auto 10rpx;/*垂直居中*/
+}
+
+/*--搜索到的内容  */
+
+/* 绝对定位的元素的位置相对于最近的已定位父元素，如果元素没有已定位的父元素，那么它的位置相对于<html>
+absolute 定位的元素和其他元素重叠。 */
+
+.search-panel {
+  position: absolute; /*绝对定位-让其浮动在整个页面上*/
+  top: 80rpx; /*因为搜搜框80rpx所以此处80rpx*/
+}
+
+/*--内容列表----  */
+
+.container {
+  background-color: #f2f2f2;
+}
+
+.movies-template {
+  margin-bottom: 30rpx;
+}
