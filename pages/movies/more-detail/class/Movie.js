@@ -1,50 +1,19 @@
-// pages/movies/more-detail/more-detail.js
-var util = require("../../../utils/util.js");
-var app = getApp();
+//引用小程序的工具类
+var util = require("../../../../utils/util.js");
 
-Page({
+class Movie {
+  //url 作为参数传进来
+  constructor(url) {
+    this.url = url
+  }
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
-    movie: {}
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    var movieId = options.id;
-    console.log("detail:", movieId)
-    var url = app.globalData.doubanBase + "/v2/movie/subject/" + movieId;
-
+  // 方法ES6不用写function
+  getMovieData() {
     util.http(url, this.processDoubanData);
-  },
+  }
 
-
-  // 查看图片
-  viewMoviePostImg: function (e) {
-    var src = e.currentTarget.dataset.src;
-    wx.previewImage({
-      current: src, // 当前显示图片的http链接
-      urls: [src],// 需要预览的图片http链接列表
-    })
-
-  },
-
-
-})
-
-
-
-
-
-/**
- * util.http(url, this.processDoubanData);
- * 
- *   // 此处data是网络返回值
- *   processDoubanData: function (data) {
+  // 此处data是网络返回值
+  processDoubanData(data) {
     if (!data) {
       return;
     }
@@ -91,17 +60,6 @@ Page({
       movie: movie
     })
 
-  },
- */
+  }
 
-
-
-
-
-
-
-
-
-
-
-
+}

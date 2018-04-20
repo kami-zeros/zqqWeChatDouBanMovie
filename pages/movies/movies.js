@@ -119,7 +119,12 @@ Page({
   },
 
   // 3.5 跳转到详情页
-
+  onMovieTap: function (event) {
+    var movieId = event.currentTarget.dataset.movieid;
+    wx.navigateTo({
+      url: 'more-detail/more-detail?id=' + movieId,
+    })
+  },
 
 
   // 4.搜索框获取到焦点
@@ -131,6 +136,7 @@ Page({
     })
   },
 
+// 请更改为bindconfirm。
   //5. 搜索框 失去焦点--开始网络搜索
   onBindBlur: function (event) {
     console.log(event)

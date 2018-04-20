@@ -3,8 +3,10 @@
 
 <template name="movieGridTemplate">
   <!--此处改为view也可以  -->
+  <!-- 在滚动 scroll-view 时会阻止页面回弹，所以在 scroll-view 中滚动，是无法触发 onPullDownRefresh -->
   <!--滚动到底部/右边，会触发 scrolltolower 事件  -->
-  <scroll-view class="grid-container" scroll-y="true" scroll-x="false" bindscrolltolower="onScrollLower">
+  <!-- <scroll-view class="grid-container" scroll-y="true" scroll-x="false" bindscrolltolower="onScrollLower"> -->
+  <view class="grid-container">
 
     <block wx:for="{{movies}}" wx:for-item="movie" wx:key="index">
       <view class='single-view-container'>
@@ -12,6 +14,8 @@
         <template is="movieTemplate" data="{{...movie}}" />
       </view>
     </block>
+  </view>
 
-  </scroll-view>
+
+  <!-- </scroll-view> -->
 </template>

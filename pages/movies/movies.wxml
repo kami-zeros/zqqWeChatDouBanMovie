@@ -5,6 +5,7 @@
 <!--1.搜索框  -->
 <view class="search">
   <icon type='search' class='search-img' size='13' color='#405f80'></icon>
+  <!--bindblur请更改为bindconfirm。  -->
   <input type='text' placeholder='血战钢锯岭、你的名字' placeholder-class='placeholder' bindfocus='onBindFoucs' bindblur='onBindBlur' maxlength='18'></input>
   <!-- <icon type='clear'  class='search-img' size='18' color='#405f80'></icon> -->
    <image src='/images/icon/xx.png' class='xx-img' wx:if="{{searchPanelShow}}" bindtap='onCancelImgTap'></image> 

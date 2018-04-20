@@ -4,9 +4,6 @@ var util = require("../../../utils/util.js");
 
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
     movies: {},
     navigateTitle: "",
@@ -20,9 +17,8 @@ Page({
    */
   onLoad: function (options) {
     var category = options.category;
-    console.log(category)
+    // console.log(category)
     this.data.navigateTitle = category;
-
 
     var dataUrl = "";
     // 分别加载三个---此处没有page字段，没法上拉加载
@@ -73,7 +69,7 @@ Page({
         title: title,
         average: subject.rating.average,
         coverageUrl: subject.images.large,
-        moviedId: subject.id
+        movieId: subject.id
       }
 
       movies.push(temp)
@@ -109,23 +105,34 @@ Page({
 
   //2. 跳转到详情页
   onMovieTap: function (event) {
+    console.log(event)
     var movieId = event.currentTarget.dataset.movieid;
+    
     wx.navigateTo({
-      // url: '../',
+      url: '../more-detail/more-detail?id=' + movieId,
     })
   },
 
 
   //3. 上拉加载
-  onScrollLower: function (event) {
-    // 此处totalCount需要每次累加（上面的网络访问每次都会执行，所以在processDoubanData中进行累加）
+  // onScrollLower: function (event) {
+  //   // 此处totalCount需要每次累加（上面的网络访问每次都会执行，所以在processDoubanData中进行累加）
+  //   var nextUrl = this.data.requestUrl + "?start=" + this.data.totalCount + "&count=20";
+
+  //   // 访问网络
+  //   util.http(nextUrl, this.processDoubanData);
+  //   // 标题栏有加载loading
+  //   wx.showNavigationBarLoading();
+  // },
+
+  //3. 触底加载更多
+  onReachBottom: function () {
     var nextUrl = this.data.requestUrl + "?start=" + this.data.totalCount + "&count=20";
 
-    // 访问网络
     util.http(nextUrl, this.processDoubanData);
-    // 标题栏有加载loading
     wx.showNavigationBarLoading();
   },
+
 
 
   //4. 下拉刷新

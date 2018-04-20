@@ -1,3 +1,5 @@
+原创：https://zhuanlan.zhihu.com/oldtimes
+
 1.布局
 2.图片切换
 3.音乐的控制

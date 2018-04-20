@@ -41,7 +41,14 @@
 				{
 					"id": -1,
 					"name": "movies",
-					"pathName": "pages/movies/movies"
+					"pathName": "pages/movies/movies",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "detail",
+					"pathName": "pages/movies/more-detail/more-detail",
+					"query": ""
 				}
 			]
 		}
