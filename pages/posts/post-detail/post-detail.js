@@ -90,7 +90,7 @@ Page({
       // 改变全局的状态
       app.globalData.g_isPlayingMusic = true
       app.globalData.g_currentMusicPostId = this.data.currentPostId;
-    })
+    });
 
     // 音乐暂停
     wx.onBackgroundAudioPause(function () {
