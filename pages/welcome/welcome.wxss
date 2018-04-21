@@ -39,3 +39,10 @@ page {
   line-height: 80rpx; /*垂直居中*/
   color: #405f80;
 }
+
+.hint{
+  font-size: 23rpx;
+  position: absolute;
+  bottom: 6rpx;
+  color: #405f80;
+}

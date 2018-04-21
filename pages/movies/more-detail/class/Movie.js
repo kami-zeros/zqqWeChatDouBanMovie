@@ -1,15 +1,17 @@
-//引用小程序的工具类
+//引用小程序的工具类(不是ES6)--其实工具类也可以用ES6语法写，此处是用ES6语法写的类
 var util = require("../../../../utils/util.js");
 
 class Movie {
   //url 作为参数传进来
   constructor(url) {
-    this.url = url
+    this.url = url;
   }
 
-  // 方法ES6不用写function
-  getMovieData() {
-    util.http(url, this.processDoubanData);
+  // 方法ES6不用写function,此处方法接受一个回调函数
+  getMovieData(callback) {
+    this.callback = callback;
+    // 此处绑定this是为了在processDoubanData方法中有相同的this指代（否则processDoubanData中的this指代的就是processDoubanData，没办法调用callback）
+    util.http(this.url, this.processDoubanData.bind(this));
   }
 
   // 此处data是网络返回值
@@ -56,10 +58,14 @@ class Movie {
 
     console.log("detail:", movie);
 
-    this.setData({
-      movie: movie
-    })
-
+    // 此处是异步方法-return是没办法返回结果的，所以要用到上面的callback
+    // return movie;
+    this.callback(movie);//如果上面没有bind(this)则此处的this不是同一个
   }
 
+}
+
+// 把JS输出
+export {
+  Movie
 }

@@ -3,4 +3,9 @@
 text {
   font-family: MicroSoft yahei;
   font-size: 24rpx;
+   color: #666;
+}
+
+input{
+    font-family: MicroSoft YaHei;
 }

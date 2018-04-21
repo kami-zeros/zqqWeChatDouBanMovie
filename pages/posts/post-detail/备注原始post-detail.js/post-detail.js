@@ -80,47 +80,27 @@ Page({
   // 全局音乐监听的两个函数
   setMusicMonitor: function () {
     var that = this
-
     //点击播放图标和总控开关都会触发这个函数
     // 音乐播放
     wx.onBackgroundAudioPlay(function () {
-      var pages = getCurrentPages();//获取当前页面栈。
-      var currentPage = pages[pages.length - 1];
-
-      if (currentPage.data.currentPostId === that.data.currentPostId) {
-        // 打开多个post-detail页面后，每个页面不会关闭，只会隐藏。通过页面栈拿到到当前页面的postid，只处理当前页面的音乐播放。
-        if (app.globalData.g_currentMusicPostId == that.data.currentPostId) {
-          // 播放当前页面音乐才改变图标
-          that.setData({
-            isPlayingMusic: true
-          })
-        }
-
-        // if (app.globalData.g_currentMusicPostId == that.data.currentPostId) {
-        //   app.globalData.g_currentMusicPostId = that.data.currentPostId;
-        // }
-      }
+      that.setData({
+        isPlayingMusic: true
+      })
 
       // 改变全局的状态
       app.globalData.g_isPlayingMusic = true
-      // app.globalData.g_currentMusicPostId = this.data.currentPostId;
+      app.globalData.g_currentMusicPostId = this.data.currentPostId;
     });
 
     // 音乐暂停
     wx.onBackgroundAudioPause(function () {
-      var pages = getCurrentPages();
-      var currentPage = pages[pages.length - 1];
-      if (currentPage.data.currentPostId === that.data.currentPostId) {
-        if (app.globalData.g_currentMusicPostId == that.data.currentPostId) {
-          that.setData({
-            isPlayingMusic: false
-          })
-        }
-      }
+      that.setData({
+        isPlayingMusic: false
+      })
 
       // 改变全局的状态
       app.globalData.g_isPlayingMusic = false
-      // app.globalData.g_currentMusicPostId = null; //暂停时清空
+      app.globalData.g_currentMusicPostId = null; //暂停时清空
     });
 
     // 音乐播放停止
@@ -172,22 +152,12 @@ Page({
 
   },
 
-  // 分享
-  onShareAppMessage: function (event) {
-    return {
-      title: "离思五首·其四",
-      desc: "曾经沧海难为水，除却巫山不是云",
-      path: "/pages/posts/post-detail/post-detail?id=0"
-    }
-  },
-
-
   // -----------------以下是收藏功能-------------------------
 
   // 点击 收藏/取消收藏 按钮
   onColletionTap: function (event) {
-    // this.getPostsCollectedSyc();//同步收藏存储
-    this.getPostsCollectedAsy();//异步收藏测试
+    this.getPostsCollectedSyc();//同步收藏存储
+    // this.getPostsCollectedAsy();//异步收藏测试
   },
 
   // 同步收藏存储
@@ -286,7 +256,6 @@ Page({
         var postsCollected = res.data;
         var postCollected = postsCollected[that.data.currentPostId];
 
-        // 收藏变成未收藏，未收藏变成收藏
         postCollected = !postCollected;
         postsCollected[that.data.currentPostId] = postCollected;  //更新缓存
 

@@ -7,4 +7,6 @@
   <view class='moto-container'  bindtap="bindViewTap">
     <text class='moto' bindtap="onteztop">开启小程序之旅</text>
   </view>
+
+  <view class='hint'>- 如有侵权，请联系1240753157@qq.com我 -</view>
 </view>

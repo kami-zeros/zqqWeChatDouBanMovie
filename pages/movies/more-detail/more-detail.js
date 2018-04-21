@@ -1,12 +1,10 @@
 // pages/movies/more-detail/more-detail.js
-var util = require("../../../utils/util.js");
+// var util = require("../../../utils/util.js");//已经在Movie.js中引入
+import { Movie } from "class/Movie.js";
 var app = getApp();
 
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
     movie: {}
   },
@@ -16,10 +14,34 @@ Page({
    */
   onLoad: function (options) {
     var movieId = options.id;
-    console.log("detail:", movieId)
+    console.log("detail:", movieId);
+
     var url = app.globalData.doubanBase + "/v2/movie/subject/" + movieId;
 
-    util.http(url, this.processDoubanData);
+    var movie = new Movie(url);
+
+    // var movieData = movie.getMovieData();//0.如果是同步则可以用此信息
+
+
+    //1.传递一个回调函数(此处getMovieData方法中有异步方法所以用此回调函数)
+    // var that = this
+    // movie.getMovieData(function (movie) {
+    //   // 当前this指代的是调用方的环境
+    //   that.setData({
+    //     movie: movie
+    //   })
+    // })
+
+    //1.1 用箭头函数写（C#/Java/Python/lambda语法）
+    movie.getMovieData((movie) => {
+      // 箭头函数里面的this指代的环境就是当前定义函数的环境，而不是调用方的环境
+      this.setData({
+        movie: movie
+      })
+    })
+
+
+    // util.http(url, this.processDoubanData);
   },
 
 
@@ -30,13 +52,9 @@ Page({
       current: src, // 当前显示图片的http链接
       urls: [src],// 需要预览的图片http链接列表
     })
-
   },
 
-
 })
-
-
 
 
 
